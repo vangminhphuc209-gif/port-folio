@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HiArrowUpRight } from "react-icons/hi2";
@@ -84,7 +85,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
 
   return (
     <article ref={itemRef} className="group will-change-transform">
-      <a href={project.href || "#contact"} data-cursor="view" className="block">
+      <Link href={project.href || `/projects/${project.slug}`} data-cursor="view" className="block">
         <div className={`grid gap-8 lg:grid-cols-12 lg:items-center ${index % 2 ? "" : ""}`}>
           <div className={`${index % 2 ? "lg:order-2 lg:col-span-8" : "lg:col-span-8"}`}>
             <div
@@ -131,7 +132,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </article>
   );
 }

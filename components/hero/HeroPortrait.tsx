@@ -64,6 +64,43 @@ export function HeroPortrait() {
     return () => window.removeEventListener("mousemove", onMove);
   }, [reducedMotion, x, y]);
 
+  // Mobile Touch Support: Swipe and Tap interactions
+  useEffect(() => {
+    if (reducedMotion) return;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (!isTouch) return;
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (forcedPose.current) return;
+      const touch = e.touches[0];
+      if (!touch) return;
+      const nx = touch.clientX / window.innerWidth;
+      if (nx < 0.35) {
+        setPose("look-left");
+      } else if (nx > 0.65) {
+        setPose("look-right");
+      } else {
+        setPose("idle");
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (forcedPose.current) return;
+      // return to idle after touch ends
+      setTimeout(() => {
+        if (!forcedPose.current) setPose("idle");
+      }, 1200);
+    };
+
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [reducedMotion]);
+
   return (
     <motion.div
       initial={reducedMotion ? false : { y: 32, opacity: 0 }}

@@ -1,9 +1,16 @@
 export type Project = {
   id: string;
+  slug: string;
   title: string;
   description: string;
   tech: string[];
   image: string;
+  role?: string;
+  timeline?: string;
+  challenge?: string;
+  solution?: string;
+  features?: string[];
+  metrics?: { label: string; value: string }[];
   href?: string;
   github?: string;
 };
@@ -47,27 +54,87 @@ export const portfolio = {
   projects: [
     {
       id: "01",
+      slug: "motion-portfolio",
       title: "Motion Portfolio",
       description:
         "A dark editorial portfolio concept focused on smooth cursor interactions, layered composition and performance-friendly motion.",
-      tech: ["Next.js", "TypeScript", "Motion"],
+      tech: ["Next.js", "TypeScript", "Motion", "GSAP"],
       image: "/projects/project-01.png",
+      role: "Lead Creative Developer & Designer",
+      timeline: "2024 – 2025",
+      challenge:
+        "Rendering multi-layered 3D perspective animations, dynamic cursor tracking, and multi-pose hero transitions without causing frame drops or high CPU load.",
+      solution:
+        "Utilized hardware-accelerated transforms, Lenis smooth scrolling, GSAP ScrollTrigger batches, and isolated state triggers to maintain consistent 60fps.",
+      features: [
+        "Interactive 6-pose reactive portrait responding to mouse coordinates",
+        "Fluid magnetic buttons and dual-ring custom cursor tracking",
+        "Editorial dark typography with ambient specular highlights",
+        "Accessible fallback for prefers-reduced-motion and touch devices",
+      ],
+      metrics: [
+        { label: "Lighthouse Performance", value: "98/100" },
+        { label: "Render Framerate", value: "60 FPS" },
+        { label: "Asset Compression", value: "-65%" },
+      ],
+      href: "/projects/motion-portfolio",
+      github: "https://github.com/vangminhphuc209-gif/vang-minh-phuc-portfolio",
     },
     {
       id: "02",
+      slug: "stem-innovation-hub",
       title: "STEM Innovation Hub",
       description:
         "A clean learning and project showcase interface organizing lessons, hardware experiments and award-winning STEM activities.",
-      tech: ["React", "Tailwind CSS", "STEM"],
+      tech: ["React", "Tailwind CSS", "IoT / Hardware", "STEM"],
       image: "/projects/project-02.png",
+      role: "Maker & Embedded System Developer",
+      timeline: "2024",
+      challenge:
+        "Presenting complex microcontroller circuitry diagrams, sensor telemetry data, and provincial award-winning projects in an intuitive digital showcase.",
+      solution:
+        "Built a modular component architecture with live hardware simulation, sensor data feeds, and interactive telemetry dashboards.",
+      features: [
+        "Real-time sensor telemetry visualizer and status indicators",
+        "Interactive microcontroller circuit schematics (ESP32 / STM32)",
+        "Documentation catalog of Provincial 1st Prize STEM innovations",
+        "Responsive dark mode UI built with Tailwind CSS and glassmorphism",
+      ],
+      metrics: [
+        { label: "Provincial Recognition", value: "1st Prize" },
+        { label: "Sensor Latency", value: "< 50ms" },
+        { label: "Hardware Nodes", value: "12+ Devices" },
+      ],
+      href: "/projects/stem-innovation-hub",
+      github: "https://github.com/vangminhphuc209-gif",
     },
     {
       id: "03",
+      slug: "interactive-dashboard",
       title: "Interactive Dashboard",
       description:
         "A data-oriented dashboard concept with modular cards, responsive layout and subtle micro-interactions.",
-      tech: ["Next.js", "Charts", "Responsive UI"],
+      tech: ["Next.js", "TypeScript", "Charts", "Algorithms"],
       image: "/projects/project-03.png",
+      role: "Frontend & Algorithm Developer",
+      timeline: "2024",
+      challenge:
+        "Visualizing algorithmic data streams, memory metrics, and competition execution graphs in real time without lagging the main thread.",
+      solution:
+        "Implemented lightweight vector canvas charts, Web Workers for mock data stream generation, and optimized re-renders with React 19.",
+      features: [
+        "Real-time signal analytics and anomaly detection graphs",
+        "Algorithmic code runner console with execution time metrics",
+        "Customizable widget layout with drag-and-drop capability",
+        "High-contrast dark editorial theme with purple neon accents",
+      ],
+      metrics: [
+        { label: "Update Rate", value: "120 updates/s" },
+        { label: "Memory Footprint", value: "< 18MB" },
+        { label: "Code Coverage", value: "95%" },
+      ],
+      href: "/projects/interactive-dashboard",
+      github: "https://github.com/vangminhphuc209-gif",
     },
   ] as Project[],
 };

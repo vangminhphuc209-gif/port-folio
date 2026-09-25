@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import type { Project } from "@/data/portfolio";
 
@@ -56,10 +57,10 @@ export function ProjectCard({ project, className = "" }: { project: Project; cla
     };
   }, []);
 
-  const href = project.href || "#work";
+  const href = project.href || `/projects/${project.slug}`;
 
   return (
-    <a
+    <Link
       ref={cardRef}
       href={href}
       data-cursor="view"
@@ -86,6 +87,6 @@ export function ProjectCard({ project, className = "" }: { project: Project; cla
           {project.tech[0]}
         </span>
       </div>
-    </a>
+    </Link>
   );
 }
